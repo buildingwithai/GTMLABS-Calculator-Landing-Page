@@ -3,6 +3,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 // @ts-ignore - Deno imports
 import Stripe from "https://esm.sh/stripe@13.6.0?target=deno";
 
+// @ts-ignore - Deno is available in the Supabase Edge Functions environment
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
   apiVersion: "2023-10-16",
   httpClient: Stripe.createFetchHttpClient(),
