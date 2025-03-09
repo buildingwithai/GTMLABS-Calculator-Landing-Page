@@ -1,7 +1,7 @@
 // This file replaces middleware functionality with a server-side approach
 // to avoid Edge Runtime compatibility issues with native modules
 
-import { createClient } from "../../../supabase/server";
+import { createClient } from "./lib/supabase";
 import { redirect } from "next/navigation";
 
 export async function checkSession() {
