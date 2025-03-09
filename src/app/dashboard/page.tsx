@@ -3,6 +3,8 @@ import { InfoIcon, UserCircle } from "lucide-react";
 import { requireAuth } from "../middleware-alternative";
 import { SubscriptionCheck } from "@/components/subscription-check";
 
+export const dynamic = "force-dynamic";
+
 export default async function Dashboard() {
   const session = await requireAuth();
   const user = session.user;

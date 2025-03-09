@@ -4,11 +4,13 @@ import Footer from "@/components/footer";
 import BenefitsSection from "@/components/benefits-section";
 import HowItWorks from "@/components/how-it-works";
 import StrategySession from "@/components/strategy-session";
-import { createClient } from "../../supabase/server";
+import { createClient } from "./lib/supabase";
 import { ArrowRight, CheckCircle2, Zap, BarChart, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/animated-section";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const supabase = await createClient();

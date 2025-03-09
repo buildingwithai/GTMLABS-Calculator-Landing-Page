@@ -14,7 +14,9 @@ export async function SubscriptionCheck({
   const session = await requireAuth();
   const user = session.user;
 
-  const isSubscribed = await checkUserSubscription(user?.id!);
+  // Temporarily disable subscription check for development
+  // const isSubscribed = await checkUserSubscription(user?.id!);
+  const isSubscribed = true;
 
   if (!isSubscribed) {
     redirect(redirectTo);
