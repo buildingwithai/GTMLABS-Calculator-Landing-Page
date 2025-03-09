@@ -35,9 +35,8 @@ type SubscriptionData = {
 };
 
 // @ts-ignore - Deno is available in the Supabase Edge Functions environment
-// @ts-ignore - Deno is available in the Supabase Edge Functions environment
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
-  apiVersion: "2023-10-16",
+  apiVersion: "2025-01-27.acacia",
   httpClient: Stripe.createFetchHttpClient(),
 });
 
