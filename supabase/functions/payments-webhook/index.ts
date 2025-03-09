@@ -97,15 +97,20 @@ async function handleSubscriptionCreated(
   if (!userId) {
     try {
       const customer = await stripe.customers.retrieve(subscription.customer);
-      const { data: userData } = await supabaseClient
-        .from("users")
-        .select("id")
-        .eq("email", customer.email)
-        .single();
+      // Check if customer is not deleted and has email property
+      if (!("deleted" in customer) && customer.email) {
+        const { data: userData } = await supabaseClient
+          .from("users")
+          .select("id")
+          .eq("email", customer.email)
+          .single();
 
-      userId = userData?.id;
-      if (!userId) {
-        throw new Error("User not found");
+        userId = userData?.id;
+        if (!userId) {
+          throw new Error("User not found");
+        }
+      } else {
+        throw new Error("Customer email not available");
       }
     } catch (error) {
       console.error("Unable to find associated user:", error);

@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["images.unsplash.com"],
   },
+  // Disable middleware completely to avoid Edge Runtime issues
+  skipMiddlewareUrlNormalize: true,
+  skipTrailingSlashRedirect: true,
 };
 
 if (process.env.NEXT_PUBLIC_TEMPO) {
