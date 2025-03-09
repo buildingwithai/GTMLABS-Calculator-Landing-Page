@@ -1,14 +1,9 @@
 // @ts-ignore - Deno imports
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { serve } from "std/http/server";
 // @ts-ignore - Deno imports
+import Stripe from "stripe";
 // @ts-ignore - Deno imports
-import Stripe from "https://esm.sh/stripe@13.6.0?target=deno";
-// @ts-ignore - Deno imports
-// @ts-ignore - Deno imports
-import {
-  createClient,
-  SupabaseClient,
-} from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 // Types
 type WebhookEvent = {
