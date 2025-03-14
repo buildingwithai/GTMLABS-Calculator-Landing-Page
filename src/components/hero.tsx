@@ -12,8 +12,11 @@ export default function Hero() {
   const triggerCalculator = useCallback(() => {
     // Use window to access the global eventBus
     if (typeof window !== "undefined") {
-      const eventBus = require("@/lib/event-bus").default;
-      eventBus.publish("try-calculator");
+      // Import directly to avoid TypeScript issues
+      import("@/lib/event-bus").then((module) => {
+        const eventBus = module.default;
+        eventBus.publish("try-calculator");
+      });
     }
   }, []);
 

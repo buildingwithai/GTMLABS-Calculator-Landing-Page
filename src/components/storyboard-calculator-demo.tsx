@@ -5,16 +5,23 @@ import { Button } from "@/components/ui/button";
 import { Calculator } from "lucide-react";
 import CompetitiveIntelCalculator from "./competitive-intel-calculator";
 
+// Define interface for the event bus
+interface IEventBus {
+  publish(event: string, ...args: any[]): void;
+  subscribe(event: string, callback: (...args: any[]) => void): () => void;
+}
+
 export default function StoryboardCalculatorDemo() {
-  // Initialize eventBus only on client side
-  const [eventBus, setEventBus] = useState(null);
+  // Initialize eventBus only on client side with proper typing
+  const [eventBus, setEventBus] = useState<IEventBus | null>(null);
+  const [demoCount, setDemoCount] = useState(0);
 
   useEffect(() => {
     // Import eventBus dynamically only on client side
-    const bus = require("@/lib/event-bus").default;
-    setEventBus(bus);
+    import("@/lib/event-bus").then((module) => {
+      setEventBus(module.default);
+    });
   }, []);
-  const [demoCount, setDemoCount] = useState(0);
 
   // Function to trigger the calculator animation
   const triggerCalculator = () => {

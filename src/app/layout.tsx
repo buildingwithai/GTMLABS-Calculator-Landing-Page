@@ -8,7 +8,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "FractionalPMO - On-Demand Product Marketing",
+  title: "GTM LABS",
   description:
     "Expert product marketing services on-demand, at a fraction of the cost",
 };

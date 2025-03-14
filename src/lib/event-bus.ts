@@ -1,7 +1,12 @@
 // Simple event bus for component communication
 type EventCallback = (...args: any[]) => void;
 
-class EventBus {
+interface IEventBus {
+  subscribe(event: string, callback: EventCallback): () => void;
+  publish(event: string, ...args: any[]): void;
+}
+
+class EventBus implements IEventBus {
   private events: Record<string, EventCallback[]> = {};
 
   subscribe(event: string, callback: EventCallback) {
@@ -23,18 +28,19 @@ class EventBus {
   }
 }
 
-// Create a singleton instance only on client side
-let eventBus: EventBus;
-
-// Check if window is defined (client side)
-if (typeof window !== "undefined") {
-  eventBus = new EventBus();
-} else {
+// Create a singleton instance
+const createEventBus = (): IEventBus => {
+  // Check if window is defined (client side)
+  if (typeof window !== "undefined") {
+    return new EventBus();
+  }
   // Server-side placeholder
-  eventBus = {
+  return {
     subscribe: () => () => {},
     publish: () => {},
-  } as EventBus;
-}
+  };
+};
+
+const eventBus = createEventBus();
 
 export default eventBus;

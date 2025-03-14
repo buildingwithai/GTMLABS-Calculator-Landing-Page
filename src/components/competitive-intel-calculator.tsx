@@ -24,8 +24,20 @@ const FRACTIONAL_HOURLY = 45; // Hourly rate for fractional competitive intellig
 
 export default function CompetitiveIntelCalculator() {
   // Initialize eventBus only on client side
-  const eventBus =
-    typeof window !== "undefined" ? require("@/lib/event-bus").default : null;
+  const [eventBus, setEventBus] = useState<{
+    subscribe: (
+      event: string,
+      callback: (...args: any[]) => void,
+    ) => () => void;
+  } | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      import("@/lib/event-bus").then((module) => {
+        setEventBus(module.default);
+      });
+    }
+  }, []);
   const [hoursPerWeek, setHoursPerWeek] = useState<number>(20);
   const [duration, setDuration] = useState<number>(6); // months
   const [comparisonType, setComparisonType] = useState<
