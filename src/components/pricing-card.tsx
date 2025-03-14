@@ -1,6 +1,5 @@
 "use client";
 
-import { User } from "@supabase/supabase-js";
 import { Button } from "./ui/button";
 import { Check } from "lucide-react";
 import {
@@ -11,14 +10,13 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { supabase } from "../../supabase/supabase";
 
 export default function PricingCard({
   item,
   user,
 }: {
   item: any;
-  user: User | null;
+  user: any | null;
 }) {
   // Handle checkout process
   const handleCheckout = async (priceId: string) => {
@@ -28,34 +26,8 @@ export default function PricingCard({
       return;
     }
 
-    try {
-      const { data, error } = await supabase.functions.invoke(
-        "supabase-functions-create-checkout",
-        {
-          body: {
-            price_id: priceId,
-            user_id: user.id,
-            return_url: `${window.location.origin}/dashboard`,
-          },
-          headers: {
-            "X-Customer-Email": user.email || "",
-          },
-        },
-      );
-
-      if (error) {
-        throw error;
-      }
-
-      // Redirect to Stripe checkout
-      if (data?.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error("No checkout URL returned");
-      }
-    } catch (error) {
-      console.error("Error creating checkout session:", error);
-    }
+    // Placeholder for checkout functionality
+    alert("Checkout functionality requires Supabase setup");
   };
 
   // Define features based on plan type

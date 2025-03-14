@@ -1,18 +1,37 @@
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar-no-supabase";
 import PricingCard from "@/components/pricing-card";
-import { createClient } from "../lib/supabase";
 
 export const dynamic = "force-dynamic";
 
 export default async function Pricing() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Removed Supabase client initialization
+  const user = null;
 
-  const { data: plans, error } = await supabase.functions.invoke(
-    "supabase-functions-get-plans",
-  );
+  // Sample pricing plans data
+  const plans = [
+    {
+      id: "price_starter",
+      name: "Starter",
+      amount: 49900,
+      interval: "month",
+      description: "Perfect for small businesses and startups",
+    },
+    {
+      id: "price_pro",
+      name: "Professional",
+      amount: 99900,
+      interval: "month",
+      description: "For growing businesses with advanced needs",
+    },
+    {
+      id: "price_enterprise",
+      name: "Enterprise",
+      amount: 199900,
+      interval: "month",
+      description: "Custom solutions for large organizations",
+    },
+  ];
+
   return (
     <>
       <Navbar />

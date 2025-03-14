@@ -26,10 +26,10 @@ export default function BenefitCard({
   return (
     <Card
       className={cn(
-        "h-full border-border/50 transition-all duration-300 overflow-hidden",
+        "h-full transition-all duration-300 overflow-hidden bg-white",
         isHovered
-          ? "border-primary shadow-lg shadow-primary/10 scale-[1.02]"
-          : "",
+          ? "border-[#99F67E] shadow-lg shadow-[#99F67E]/10 scale-[1.02]"
+          : "border-[#E8F4E3]",
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -37,23 +37,23 @@ export default function BenefitCard({
       <CardHeader className="pb-2">
         <div
           className={cn(
-            "w-12 h-12 rounded-lg flex items-center justify-center text-primary bg-primary/10 mb-4 transition-all duration-300",
-            isHovered ? "bg-primary/20 scale-110" : "",
+            "w-12 h-12 rounded-lg flex items-center justify-center text-black bg-[#E8F4E3] mb-4 transition-all duration-300",
+            isHovered ? "bg-[#99F67E]/50 scale-110" : "",
           )}
         >
           {icon}
         </div>
         <CardTitle
           className={cn(
-            "text-xl transition-all duration-300",
-            isHovered ? "text-primary" : "",
+            "text-xl transition-all duration-300 text-black",
+            isHovered ? "text-[#000000]" : "",
           )}
         >
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <CardDescription className="text-muted-foreground">
+        <CardDescription className="text-[#4A4A4A]">
           {description}
         </CardDescription>
       </CardContent>
