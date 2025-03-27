@@ -70,6 +70,30 @@
   }
 }
 
+/* Fallback styles for browsers that don't support animations */
+.no-animation-support .animate-bounce-subtle,
+.no-animation-support .animate-pulse-subtle,
+.no-animation-support .animate-bounce-once,
+.no-animation-support .glow-effect,
+.no-animation-support .animate-border-pulse-green,
+.no-animation-support .animate-border-pulse-orange,
+.no-animation-support .animate-border-pulse-blue,
+.no-animation-support .laser-border-green,
+.no-animation-support .laser-border-orange,
+.no-animation-support .laser-border-blue {
+  transition: none !important;
+  animation: none !important;
+}
+
+.no-animation-support .laser-border-green::before,
+.no-animation-support .laser-border-green::after,
+.no-animation-support .laser-border-orange::before,
+.no-animation-support .laser-border-orange::after,
+.no-animation-support .laser-border-blue::before,
+.no-animation-support .laser-border-blue::after {
+  display: none !important;
+}
+
 /* Custom animations */
 @keyframes glow {
   0% {

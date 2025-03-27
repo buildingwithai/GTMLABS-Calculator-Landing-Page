@@ -5,14 +5,22 @@ import BenefitsSection from "@/components/benefits-section";
 import HowItWorks from "@/components/how-it-works";
 import StrategySession from "@/components/strategy-session";
 import CompetitiveServices from "@/components/competitive-services";
-import ClientPortalDemo from "@/components/client-portal-demo";
 import FaqSection from "@/components/faq-section";
 import { ArrowRight, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/animated-section";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import { ErrorBoundary } from "@/components/error-boundary";
+import ClientPortalDemoFallback from "@/components/client-portal-demo-fallback";
 
-export const dynamic = "force-dynamic";
+// Dynamically import the ClientPortalDemo component with SSR disabled
+const ClientPortalDemo = dynamic(
+  () => import("@/components/client-portal-demo"),
+  { ssr: false, loading: () => <ClientPortalDemoFallback /> },
+);
+
+export const dynamicConfig = "force-dynamic";
 
 export default async function Home() {
   // Removed Supabase client initialization
@@ -33,7 +41,9 @@ export default async function Home() {
       <CompetitiveServices />
 
       {/* Client Portal Demo Section */}
-      <ClientPortalDemo />
+      <ErrorBoundary fallback={<ClientPortalDemoFallback />}>
+        <ClientPortalDemo />
+      </ErrorBoundary>
 
       {/* Stats Section */}
       <section className="py-24 bg-[#E2F4D7]">
