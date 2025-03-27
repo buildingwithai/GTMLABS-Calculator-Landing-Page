@@ -10,17 +10,17 @@ import { ArrowRight, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/animated-section";
 import Link from "next/link";
-import dynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 import { ErrorBoundary } from "@/components/error-boundary";
 import ClientPortalDemoFallback from "@/components/client-portal-demo-fallback";
 
 // Dynamically import the ClientPortalDemo component with SSR disabled
-const ClientPortalDemo = dynamic(
+const ClientPortalDemo = dynamicImport(
   () => import("@/components/client-portal-demo"),
   { ssr: false, loading: () => <ClientPortalDemoFallback /> },
 );
 
-export const dynamicConfig = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   // Removed Supabase client initialization
