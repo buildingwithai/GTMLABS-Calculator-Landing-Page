@@ -37,8 +37,8 @@ export default function Hero() {
               </h1>
 
               <p className="text-xl text-[#4A4A4A] mb-8 leading-relaxed">
-                Fractional competitive intelligence that scales with your
-                needs—pause or cancel anytime.
+                Fractional competitive intelligence that scales with your needs,
+                pause or cancel anytime.
               </p>
 
               <div className="flex flex-col items-start gap-4 mb-8 text-sm text-[#4A4A4A]">
