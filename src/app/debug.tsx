@@ -65,12 +65,8 @@ export default function DebugPage() {
         }
       };
 
-      animation.onerror = () => {
-        setAnimationTest("Animation failed with error");
-        if (document.body.contains(testElement)) {
-          document.body.removeChild(testElement);
-        }
-      };
+      // Note: Animation API doesn't have an onerror event
+      // We'll use try-catch instead for error handling
     } catch (error) {
       setAnimationTest(`Animation test error: ${error.message}`);
     }
