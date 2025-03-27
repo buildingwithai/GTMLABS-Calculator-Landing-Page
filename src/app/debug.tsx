@@ -68,7 +68,9 @@ export default function DebugPage() {
       // Note: Animation API doesn't have an onerror event
       // We'll use try-catch instead for error handling
     } catch (error) {
-      setAnimationTest(`Animation test error: ${error.message}`);
+      setAnimationTest(
+        `Animation test error: ${error instanceof Error ? error.message : String(error)}`,
+      );
     }
   }, []);
 
