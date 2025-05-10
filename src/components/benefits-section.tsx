@@ -1,38 +1,38 @@
-import { Zap, MessageSquare, Clock } from "lucide-react";
+import { Zap, Target, Clock } from "lucide-react";
 import BenefitCard from "./benefit-card";
 import AnimatedSection from "./animated-section";
 
 export default function BenefitsSection() {
   const benefits = [
     {
-      icon: <Zap className="h-6 w-6" />,
-      title: "Faster Launches",
+      icon: <Target className="h-6 w-6" />,
+      title: "Competitive Advantage",
       description:
-        "Accelerate your product launches with expert messaging, positioning, and go-to-market strategies that resonate with your target audience.",
+        "Gain strategic insights into competitor moves, positioning, and vulnerabilities that help you outmaneuver the competition and win more deals.",
     },
     {
-      icon: <MessageSquare className="h-6 w-6" />,
-      title: "Expert Messaging",
+      icon: <Zap className="h-6 w-6" />,
+      title: "Faster Response",
       description:
-        "Craft compelling product narratives and value propositions that clearly communicate your unique benefits and drive customer engagement.",
+        "Quickly adapt to market changes with real-time competitive intelligence that keeps your team informed and ready to respond to competitive threats.",
     },
     {
       icon: <Clock className="h-6 w-6" />,
-      title: "Flexible Plans",
+      title: "Flexible Scaling",
       description:
-        "Scale your product marketing resources up or down as needed, paying only for the hours you use with no long-term commitments.",
+        "Scale your competitive intelligence resources up or down as needed, with the ability to pause or cancel anytime—no long-term commitments.",
     },
   ];
 
   return (
-    <section id="benefits" className="py-24 bg-card">
+    <section id="benefits" className="py-24" style={{ background: "#F2F2F2" }}>
       <div className="container mx-auto px-4">
         <AnimatedSection className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
-            Why Choose Fractional Product Marketing
+          <h2 className="text-4xl font-bold mb-4 text-black">
+            Why Choose Fractional Competitive Intelligence
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Get all the benefits of expert product marketing without the
+          <p className="text-[#4A4A4A] max-w-2xl mx-auto">
+            Get all the benefits of expert competitive intelligence without the
             overhead of a full-time hire
           </p>
         </AnimatedSection>
